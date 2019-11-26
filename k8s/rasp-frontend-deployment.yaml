@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rasp-frontend-deployment
+  labels:
+    app: rasp-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rasp-frontend
+  template:
+    metadata:
+      labels:
+        app: rasp-frontend
+    spec:
+      containers:
+        - name: rasp-frontend
+          image: sk134pepe/rasp-frontend:latest
+          ports:
+            - containerPort: 4000
