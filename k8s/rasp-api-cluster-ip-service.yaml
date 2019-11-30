@@ -1,10 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rasp-api-cluster-ip
+  name: rasp-api-service
 spec:
   selector:
     run: rasp-api
   ports:
-    - protocol: TCP
+    - name: api-port
+      protocol: TCP
       port: 8080
+      targetPort: 8080
