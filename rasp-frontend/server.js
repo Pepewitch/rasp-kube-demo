@@ -8,7 +8,7 @@ app.get("/data", async (req, res) => {
   let serverRes;
   try {
     serverRes = await axios
-      .get(`http://rasp-api:8080/data`)
+      .get(`http://rasp-api-service:8080/data`)
       .then(res => res.data);
   } catch (error) {
     serverRes = error.message;
