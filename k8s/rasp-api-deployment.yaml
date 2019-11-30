@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: rasp-api
-          image: sk134pepe/rasp-api:pi-1
+          image: sk134pepe/rasp-api:pi-2
           env:
             - name: PORT
               value: "8080"

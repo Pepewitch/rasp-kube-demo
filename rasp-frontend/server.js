@@ -1,7 +1,20 @@
 const express = require("express");
 const app = express();
 const axios = require("axios");
+const path = require("path");
 
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.get("/data", async (req, res) => {
+  let serverRes;
+  try {
+    serverRes = await axios
+      .get(`http://rasp-api:3000/data`)
+      .then(res => res.data);
+  } catch (error) {
+    serverRes = error.message;
+  }
+  return res.status(200).send(serverRes);
+});
 app.get("*", async (req, res) => {
   let serverRes;
   try {
