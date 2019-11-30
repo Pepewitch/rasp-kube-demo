@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: rasp-frontend
-          image: sk134pepe/rasp-frontend:pi-4
+          image: sk134pepe/rasp-frontend:pi-5
           ports:
             - containerPort: 4000
