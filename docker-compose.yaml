@@ -3,7 +3,3 @@ version: "3.2"
 services:
   loadbalance:
     image: nginx
-    ports:
-      - "8080:80"
-    volumes:
-      - ./config/nginx.conf:/etc/nginx/nginx.conf
