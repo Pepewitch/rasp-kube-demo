@@ -18,6 +18,6 @@ spec:
       containers:
         - name: rasp-summary
           image: sk134pepe/rasp-summary:latest
-          # imagePullPolicy: Always
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000

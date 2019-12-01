@@ -18,6 +18,6 @@ spec:
       containers:
         - name: rasp-gateway
           image: sk134pepe/rasp-gateway:latest
-          # imagePullPolicy: Always
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000

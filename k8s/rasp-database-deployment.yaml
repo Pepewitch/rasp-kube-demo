@@ -18,6 +18,6 @@ spec:
       containers:
         - name: rasp-database
           image: sk134pepe/rasp-database:latest
-          # imagePullPolicy: Always
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000

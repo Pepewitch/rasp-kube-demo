@@ -18,6 +18,6 @@ spec:
       containers:
         - name: rasp-frontend
           image: sk134pepe/rasp-frontend:latest
-          # imagePullPolicy: Always
+          imagePullPolicy: Always
           ports:
             - containerPort: 4000
