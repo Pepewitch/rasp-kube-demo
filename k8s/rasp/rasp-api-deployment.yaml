@@ -16,9 +16,10 @@ spec:
     spec:
       containers:
         - name: rasp-api
-          image: sk134pepe/rasp-api:pi-5
+          image: sk134pepe/rasp-api:latest
+          imagePullPolicy: Always
           env:
             - name: PORT
-              value: "8080"
+              value: "5000"
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
