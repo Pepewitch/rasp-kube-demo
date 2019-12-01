@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rasp-gateway-deployment
+  namespace: rasp-pi
+  labels:
+    app: rasp-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rasp-gateway
+  template:
+    metadata:
+      labels:
+        app: rasp-gateway
+    spec:
+      containers:
+        - name: rasp-gateway
+          image: sk134pepe/rasp-gateway:latest
+          # imagePullPolicy: Always
+          ports:
+            - containerPort: 5000

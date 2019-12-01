@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rasp-database-deployment
+  namespace: rasp-pi
+  labels:
+    app: rasp-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rasp-database
+  template:
+    metadata:
+      labels:
+        app: rasp-database
+    spec:
+      containers:
+        - name: rasp-database
+          image: sk134pepe/rasp-database:latest
+          # imagePullPolicy: Always
+          ports:
+            - containerPort: 5000

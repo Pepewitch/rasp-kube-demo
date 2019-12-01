@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rasp-summary-deployment
+  namespace: rasp-pi
+  labels:
+    app: rasp-summary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rasp-summary
+  template:
+    metadata:
+      labels:
+        app: rasp-summary
+    spec:
+      containers:
+        - name: rasp-summary
+          image: sk134pepe/rasp-summary:latest
+          # imagePullPolicy: Always
+          ports:
+            - containerPort: 5000

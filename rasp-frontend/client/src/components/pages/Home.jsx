@@ -791,7 +791,15 @@ const FrequencyVisitorChart = ({ data: _data, onClick }) => {
       />
     );
   }
-  const data = [[1, 143], [2, 83], [3, 86], [4, 42], [5, 21], [6, 8], [7, 7]];
+  const data = [
+    [1, 143],
+    [2, 83],
+    [3, 86],
+    [4, 42],
+    [5, 21],
+    [6, 8],
+    [7, 7]
+  ];
   console.log("data", data);
   return (
     <Histogram
@@ -815,6 +823,43 @@ const ChartCard = ({ loading, title, data, chart, span }) => {
   );
 };
 
+const SummaryList = () => {
+  const [loading, setLoading] = useState(true);
+  const [summaries, setSummaries] = useState([]);
+  const colors = [
+    DATA_CARD_COLOR.BLUE,
+    DATA_CARD_COLOR.PURPLE,
+    DATA_CARD_COLOR.GREEN,
+    DATA_CARD_COLOR.PINK
+  ];
+  useEffect(() => {
+    fetch("/summary")
+      .then(res => res.json())
+      .then(summaries => {
+        setSummaries(summaries);
+        setLoading(false);
+      });
+  }, []);
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr 1fr",
+        gridColumnGap: 16,
+        marginBottom: 24
+      }}
+    >
+      {loading ? (
+        <Spin />
+      ) : (
+        summaries.map((s, i) => (
+          <DataCard title={s.title} value={s.value} color={colors[i]} />
+        ))
+      )}
+    </div>
+  );
+};
+
 const MainContent = () => {
   const { loading, data: _data } = useData();
   const { filter } = useContext(FilterContext);
@@ -830,35 +875,7 @@ const MainContent = () => {
   const close2 = () => setVisible2(false);
   return (
     <Layout style={{ padding: 24 }}>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
-          gridColumnGap: 16,
-          marginBottom: 24
-        }}
-      >
-        <DataCard
-          title="Realtime visitors"
-          value={120}
-          color={DATA_CARD_COLOR.BLUE}
-        />
-        <DataCard
-          title="Peak time"
-          value={"12.00"}
-          color={DATA_CARD_COLOR.PURPLE}
-        />
-        <DataCard
-          title="Most active day"
-          value={"Monday"}
-          color={DATA_CARD_COLOR.GREEN}
-        />
-        <DataCard
-          title="Least active day"
-          value={"Tuesday"}
-          color={DATA_CARD_COLOR.PINK}
-        />
-      </div>
+      <SummaryList />
       <Container>
         <ChartCard loading={loading} data={data} chart={RetentionChart} />
         <ChartCard span={1} loading={loading} data={data} chart={GenderChart} />
