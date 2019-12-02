@@ -5,7 +5,7 @@ const app = express();
 const data = [
   {
     title: "Realtime visitors",
-    value: 120
+    value: 112
   },
   {
     title: "Peak time",
@@ -13,7 +13,7 @@ const data = [
   },
   {
     title: "Most active day",
-    value: "Monday"
+    value: "Friday"
   },
   {
     title: "Least active day",
