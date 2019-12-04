@@ -2,9 +2,9 @@
 
 Kubernetes deployment on Raspberry pi cluster
 
-Installation
+## Installation
 
-hardware require:
+### hardware require:
 
 > 1 machine for HAProxy IP: 192.168.0.100  
 > 1 machine nginx IP: 192.168.0.101  
@@ -19,7 +19,7 @@ Installing cfssl
 
 1- Download the binaries.
 
-```bash
+```
 $ wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
 $ wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
 ```
@@ -753,6 +753,8 @@ $ ./deploy.sh
 ```
 
 **Config external network proxy to Kubernetes services**
+
+We use nginx to proxy network requests to our cluster
 
 ```conf
 worker_processes  1;
